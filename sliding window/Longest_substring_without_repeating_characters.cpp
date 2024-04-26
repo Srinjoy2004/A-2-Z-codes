@@ -2,14 +2,15 @@
 
 // Longest Substring Without Repeating Characters
 
-bruteforce class Solution
+// bruteforce
+class Solution
 {
 public:
     int lengthOfLongestSubstring(string s)
     {
 
         int len;
-        int maxlen = 00;
+        int maxlen = 0;
         for (int i = 0; i < s.size(); i++)
         {
 
@@ -35,3 +36,37 @@ public:
         return maxlen;
     }
 };
+// O(N^2)
+
+// better
+
+class Solution
+{
+public:
+    int lengthOfLongestSubstring(string s)
+    {
+        unordered_map<char, int> mymap;
+
+        // for (int i = 0; i < 250; ++i) {
+        //     mymap[i] = -1;
+        // }
+        int len;
+        int n = s.size();
+        int l = 0;
+        int r = 0;
+        int maxlen = 0;
+        while (r < n)
+        {
+            if (mymap.find(s[r]) != mymap.end() && l <= mymap[s[r]])
+            {
+                l = mymap[s[r]] + 1;
+            }
+            // len =r-l+1;
+            maxlen = max(r - l + 1, maxlen);
+            mymap[s[r]] = r;
+            r++;
+        }
+        return maxlen;
+    }
+};
+// O[n]
