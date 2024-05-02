@@ -31,3 +31,78 @@ public:
         return maxlen;
     }
 };
+
+// Time complexity -> O(N^2)
+
+// better
+class Solution
+{
+public:
+    int totalFruit(vector<int> &fruits)
+    {
+        int k = 2;
+        map<int, int> mymap;
+        int l = 0;
+        int r = 0;
+        int maxlen = 0;
+        while (r < fruits.size())
+        {
+            mymap[fruits[r]]++;
+            if (mymap.size() > k)
+            {
+                while (mymap.size() > k)
+                {
+                    mymap[fruits[l]]--;
+                    if (mymap[fruits[l]] == 0)
+                        mymap.erase(fruits[l]);
+                    l++;
+                }
+            }
+            if (mymap.size() <= k)
+            {
+                maxlen = max(maxlen, r - l + 1);
+            }
+            r++;
+        }
+        return maxlen;
+    }
+};
+// time complexity -> O(2N)
+// space complexity -> O(3)
+
+// optimal
+
+class Solution
+{
+public:
+    int totalFruit(vector<int> &fruits)
+    {
+        int k = 2;
+        map<int, int> mymap;
+        int l = 0;
+        int r = 0;
+        int maxlen = 0;
+        while (r < fruits.size())
+        {
+            mymap[fruits[r]]++;
+            if (mymap.size() > k)
+            {
+                // while (mymap.size() > k) {
+                mymap[fruits[l]]--;
+                if (mymap[fruits[l]] == 0)
+                    mymap.erase(fruits[l]);
+                l++;
+                // }
+            }
+            if (mymap.size() <= k)
+            {
+                maxlen = max(maxlen, r - l + 1);
+            }
+            r++;
+        }
+        return maxlen;
+    }
+};
+
+// time complexity ->O(n)
+// space complexity->O(1)
