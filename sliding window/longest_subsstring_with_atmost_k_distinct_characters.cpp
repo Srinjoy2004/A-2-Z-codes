@@ -29,3 +29,5 @@ int kDistinctChars(int k, string &s)
     return maxlen;
 }
 // time complexity ->O(n^2)
+
+// better and optimal approach same as fruit problem
