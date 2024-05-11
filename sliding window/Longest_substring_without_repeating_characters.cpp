@@ -36,8 +36,8 @@ public:
         return maxlen;
     }
 };
-// O(N^2)
 
+// O(N^2)
 // better
 
 class Solution
