@@ -58,6 +58,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "*.embeddedhtml": "html",
-    "vector": "cpp"
+    "vector": "cpp",
+    "unordered_map": "cpp"
   }
 }
