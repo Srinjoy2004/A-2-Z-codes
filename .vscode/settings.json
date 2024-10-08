@@ -59,6 +59,12 @@
   "files.associations": {
     "*.embeddedhtml": "html",
     "vector": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "initializer_list": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "valarray": "cpp"
   }
 }
