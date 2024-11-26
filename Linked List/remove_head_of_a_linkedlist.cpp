@@ -17,7 +17,7 @@ void removeHead(Node*& head) {
 
     Node* temp = head; // Save the current head
     head = head->next; // Move head to the next node
-    delete temp;       // Free the memory of the old head
+    free (temp);       // Free the memory of the old head
 }
 
 void printList(Node* head) {
@@ -43,9 +43,6 @@ int main() {
     printList(head);
 
     // Clean up remaining nodes
-    while (head) {
-        removeHead(head);
-    }
-
+   
     return 0;
 }
