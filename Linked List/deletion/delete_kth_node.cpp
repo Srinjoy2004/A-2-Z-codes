@@ -10,11 +10,11 @@ struct Node
 };
 
 // Function to remove the tail node
-Node *delete_node_of_particular_value(Node *head, int k)
+Node *remove_kth_element(Node *head, int k)
 {
     if (head == nullptr)
         return head;
-    if (k == head->data)
+    if (k == 1)
     {
         Node *temp = head;
         head = head->next;
@@ -27,7 +27,7 @@ Node *delete_node_of_particular_value(Node *head, int k)
     while (temp != nullptr)
     {
         count++;
-        if (temp->data == k)
+        if (count == k)
         {
             prev->next = prev->next->next;
             free(temp);
@@ -52,15 +52,15 @@ void printList(Node *head)
 int main()
 {
     // Creating a sample linked list: 1 -> 2 -> 3 -> nullptr
-    Node *head = new Node(4);
-    head->next = new Node(1);
-    head->next->next = new Node(10);
+    Node *head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(3);
 
     cout << "Original list: ";
     printList(head);
 
     // Remove the tail node
-    head=delete_node_of_particular_value(head,101);
+    head=remove_kth_element(head,1);
     cout << "After removing tail: ";
     printList(head);
 
