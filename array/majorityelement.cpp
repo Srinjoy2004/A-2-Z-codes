@@ -1,56 +1,42 @@
 // https://leetcode.com/problems/majority-element/
 
 // better using hashmap
-class Solution
-{
+class Solution {
 public:
-    int majorityElement(vector<int> &nums)
-    {
-        int res;
-        unordered_map<int, int> mymap;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            mymap[nums[i]]++;
+    int majorityElement(vector<int>& nums) {
+        map<int, int> mpp;
+        int majority = NULL;
+        int n = nums.size();
+        for (int i = 0; i < n; i++) {
+            mpp[nums[i]]++;
         }
-        for (auto it : mymap)
-        {
-            if (it.second > nums.size() / 2)
-                res = it.first;
+        for (auto it : mpp) {
+            if (it.second > n / 2)
+                majority = it.first;
         }
-        return res;
+        return majority;
     }
 };
 
 // moore's voting algo (optimal)
 
-class Solution
-{
+class Solution {
 public:
-    int majorityElement(vector<int> &nums)
-    {
+    int majorityElement(vector<int>& nums) {
+        int n = nums.size();
         int count = 0;
-        int el;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            if (count == 0)
-            {
+        int majority = NULL;
+        for (int i = 0; i < n; i++) {
+            if (count == 0) {
+                majority = nums[i];
                 count = 1;
-                el = nums[i];
+            } else {
+                if (majority == nums[i])
+                    count++;
+                else
+                    count--;
             }
-            else if (nums[i] == el)
-                count++;
-            else if (nums[i] != el)
-                count--;
         }
-        int c = 0;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            if (el == nums[i])
-                c++;
-        }
-        if (c > nums.size() / 2)
-            return el;
-        else
-            return -1;
+        return majority;
     }
 };

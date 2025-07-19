@@ -3,21 +3,14 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> mymap;
-        vector<int>twosum;
+        map<int, int> mp;
         for (int i = 0; i < nums.size(); i++) {
-            
+            int rem = target - nums[i];
+            if (mp.find(rem) != mp.end())
+                return {mp[rem], i};
 
-            if (mymap.find(target-nums[i]) == mymap.end())
-            {
-                 mymap.insert({ nums[i],i});
-            }else
-            {
-                twosum.push_back(mymap[target-nums[i]]);
-                twosum.push_back(i);
-                break;
-
-            }
-        }return twosum;
+            mp[nums[i]] = i;
+        }
+        return {};
     }
 };

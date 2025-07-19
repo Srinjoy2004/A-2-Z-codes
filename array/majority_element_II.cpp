@@ -1,24 +1,21 @@
 // https://leetcode.com/problems/majority-element-ii/description/
 
 // using hashmaps
-class Solution
-{
+class Solution {
 public:
-    vector<int> majorityElement(vector<int> &nums)
-    {
-        unordered_map<int, int> mymap;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            mymap[nums[i]]++;
-        }
+    vector<int> majorityElement(vector<int>& nums) {
+        map<int, int> mpp;
+        vector<int> res;
+        // int majority = NULL;
         int n = nums.size();
-        nums.clear();
-        for (auto it : mymap)
-        {
-            if (it.second > n / 3)
-                nums.push_back(it.first);
+        for (int i = 0; i < n; i++) {
+            mpp[nums[i]]++;
         }
-        return nums;
+        for (auto it : mpp) {
+            if (it.second > n / 3)
+                res.push_back(it.first);
+        }
+        return res;
     }
 };
 
