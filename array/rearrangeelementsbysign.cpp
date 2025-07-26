@@ -32,18 +32,20 @@ public:
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> result(n);
-        int pi = 0;
-        int ni = 1;
-        for (int& num : nums) {
-            if (num > 0) {
-                result[pi] = num;
-                pi = pi + 2;
+        vector<int> res(nums.size());
+
+       // int n=nums.size();
+        int p = 0;
+        int n = 1;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) {
+                res[p] = nums[i];
+                p = p + 2;
             } else {
-                result[ni] = num;
-                ni = ni + 2;
+                res[n] = nums[i];
+                n = n + 2;
             }
-        }return result;
+        }
+        return res;
     }
 };
